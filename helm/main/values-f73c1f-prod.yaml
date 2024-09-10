@@ -2,5 +2,5 @@ rabbitmq:
   enabled: true
   replicaCount: 2
   hosts:
-    management: dev-moti-rabbitmq.apps.silver.devops.gov.bc.ca
-    stomp: dev-moti-rabbitmq-stomp.apps.silver.devops.gov.bc.ca
+    management: moti-rabbitmq.apps.silver.devops.gov.bc.ca
+    stomp: moti-rabbitmq-stomp.apps.silver.devops.gov.bc.ca
