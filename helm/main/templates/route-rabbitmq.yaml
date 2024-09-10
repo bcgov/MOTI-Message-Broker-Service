@@ -1,0 +1,43 @@
+{{- if .Values.rabbitmq.enabled }}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "main.fullname" . }}-rabbitmq
+  annotations:
+    haproxy.router.openshift.io/balance: roundrobin
+    haproxy.router.openshift.io/disable_cookies: 'true'
+    haproxy.router.openshift.io/timeout: 180s
+spec:
+  {{- if .Values.rabbitmq.hosts.management }}
+  host: {{ .Values.rabbitmq.hosts.management }}
+  {{- end }}
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  port:
+    targetPort: 15672
+  to:
+    kind: Service
+    name: moti-rabbitmq
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "main.fullname" . }}-rabbitmq-stomp
+  annotations:
+    haproxy.router.openshift.io/balance: roundrobin
+    haproxy.router.openshift.io/disable_cookies: 'true'
+    haproxy.router.openshift.io/timeout: 180s
+spec:
+  {{- if .Values.rabbitmq.hosts.stomp }}
+  host: {{ .Values.rabbitmq.hosts.stomp }}
+  {{- end }}
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  port:
+    targetPort: 15674
+  to:
+    kind: Service
+    name: moti-rabbitmq
+{{- end }}

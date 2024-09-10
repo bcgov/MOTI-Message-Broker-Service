@@ -1,0 +1,11 @@
+apiVersion: v2
+name: main
+description: A Helm chart for MOTI-Message-Broker-Service
+type: application
+version: 0.1.0
+appVersion: '0.1.0'
+dependencies:
+  - name: rabbitmq
+    version: 14.6.9
+    repository: https://charts.bitnami.com/bitnami
+    condition: rabbitmq.enabled

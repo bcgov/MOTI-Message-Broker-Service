@@ -1,0 +1,61 @@
+# See https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml
+rabbitmq:
+  enabled: false
+  
+  nameOverride: moti-rabbitmq
+  fullnameOverride: moti-rabbitmq
+
+  auth:
+    username: admin
+    existingPasswordSecret: rabbitmq-admin # pragma: allowlist secret
+
+  plugins: "rabbitmq_management rabbitmq_peer_discovery_k8s rabbitmq_web_stomp rabbitmq_auth_backend_oauth2"
+  extraConfiguration: |-
+    management.disable_basic_auth = false
+    management.oauth_enabled = true
+
+    auth_backends.1 = rabbit_auth_backend_oauth2
+    auth_backends.2 = rabbit_auth_backend_internal
+
+    auth_oauth2.resource_server_id = rabbitmq-auth
+    auth_oauth2.jwks_url = https://dev.loginproxy.gov.bc.ca/auth/realms/moti-custom/protocol/openid-connect/certs
+    #auth_oauth2.https.peer_verification = verify_none
+    #auth_oauth2.https.verify = verify_none
+    #auth_oauth2.https.fail_if_no_peer_cert = false
+    auth_oauth2.scope_prefix = rabbitmq.
+    auth_oauth2.additional_scopes_key = roles
+    auth_oauth2.verify_aud = true
+
+  extraContainerPorts:
+  - name: stomp
+    containerPort: 15674
+    protocol: TCP
+  service:
+    extraPorts:
+    - name: stomp
+      targetPort: stomp
+      port: 15674
+      protocol: TCP
+  persistence:
+    enabled: true
+    size: 100Mi
+  resources:
+    limits:
+      cpu: 1
+      memory: 2Gi
+    requests:
+      cpu: 0.5
+      memory: 512Mi
+
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+  pdb:
+    create: false
+  serviceAccount:
+    create: false
+  rbac:
+    create: false
+  ingress:
+    enabled: false
