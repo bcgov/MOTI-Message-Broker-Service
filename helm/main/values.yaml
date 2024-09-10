@@ -1,7 +1,7 @@
 # See https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml
 rabbitmq:
   enabled: false
-  
+
   nameOverride: moti-rabbitmq
   fullnameOverride: moti-rabbitmq
 
