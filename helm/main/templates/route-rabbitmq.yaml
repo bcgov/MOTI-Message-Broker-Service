@@ -7,6 +7,9 @@ metadata:
     haproxy.router.openshift.io/balance: roundrobin
     haproxy.router.openshift.io/disable_cookies: 'true'
     haproxy.router.openshift.io/timeout: 180s
+    {{- if .Values.rabbitmq.ipWhitelist }}
+    haproxy.router.openshift.io/ip_whitelist:  {{ .Values.rabbitmq.ipWhitelist }}
+    {{- end }}
 spec:
   {{- if .Values.rabbitmq.hosts.management }}
   host: {{ .Values.rabbitmq.hosts.management }}
@@ -28,6 +31,9 @@ metadata:
     haproxy.router.openshift.io/balance: roundrobin
     haproxy.router.openshift.io/disable_cookies: 'true'
     haproxy.router.openshift.io/timeout: 180s
+    {{- if .Values.rabbitmq.ipWhitelist }}
+    haproxy.router.openshift.io/ip_whitelist:  {{ .Values.rabbitmq.ipWhitelist }}
+    {{- end }}
 spec:
   {{- if .Values.rabbitmq.hosts.stomp }}
   host: {{ .Values.rabbitmq.hosts.stomp }}
