@@ -9,8 +9,10 @@ rabbitmq:
   auth:
     username: admin
     existingPasswordSecret: rabbitmq-admin # pragma: allowlist secret
+    existingErlangSecret: rabbitmq-admin # pragma: allowlist secret
 
   plugins: "rabbitmq_management rabbitmq_peer_discovery_k8s rabbitmq_web_stomp rabbitmq_auth_backend_oauth2"
+
   extraConfiguration: |-
     management.disable_basic_auth = false
     management.oauth_enabled = true
@@ -27,6 +29,13 @@ rabbitmq:
     auth_oauth2.additional_scopes_key = roles
     auth_oauth2.verify_aud = true
 
+  podManagementPolicy: OrderedReady # Parallel
+
+  clustering:
+    enabled: true
+    rebalance: true
+    forceBoot: true
+
   extraContainerPorts:
   - name: stomp
     containerPort: 15674
@@ -39,7 +48,7 @@ rabbitmq:
       protocol: TCP
   persistence:
     enabled: true
-    size: 100Mi
+    size: 300Mi
   resources:
     limits:
       cpu: 0.5
@@ -48,17 +57,21 @@ rabbitmq:
       cpu: 0.2
       memory: 512Mi
 
+  # See https://github.com/bitnami/charts/issues/2227
+  serviceAccount:
+    create: true
+  rbac:
+    create: true
+
   podAntiAffinityPreset: hard
 
+  networkPolicy:
+    enabled: false
   podSecurityContext:
     enabled: false
   containerSecurityContext:
     enabled: false
   pdb:
-    create: false
-  serviceAccount:
-    create: false
-  rbac:
     create: false
   ingress:
     enabled: false
