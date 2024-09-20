@@ -75,3 +75,5 @@ rabbitmq:
     create: false
   ingress:
     enabled: false
+
+allowedNamespace: []
