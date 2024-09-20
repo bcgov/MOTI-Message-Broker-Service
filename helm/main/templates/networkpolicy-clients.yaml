@@ -1,0 +1,19 @@
+{{- $fullname := include "main.fullname" . }}
+{{- range .Values.allowedNamespace }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ $fullname }}-{{ .name }}-{{ .environment }}
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: {{ .name }}
+              environment: {{ .environment }}
+              kubernetes.io/metadata.name: {{ .name }}-{{ .environment }}
+  policyTypes:
+    - Ingress
+{{- end }}
