@@ -4,3 +4,7 @@ rabbitmq:
   hosts:
     management: moti-rabbitmq.apps.silver.devops.gov.bc.ca
     stomp: moti-rabbitmq-stomp.apps.silver.devops.gov.bc.ca
+
+allowedNamespace:
+  - name: fdf5df
+    environment: prod
