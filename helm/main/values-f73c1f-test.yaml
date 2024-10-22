@@ -2,5 +2,9 @@ rabbitmq:
   enabled: true
   replicaCount: 2
   hosts:
-    management: test-moti-rabbitmq.apps.silver.devops.gov.bc.ca
-    stomp: test-moti-rabbitmq-stomp.apps.silver.devops.gov.bc.ca
+    management: uat-moti-rabbitmq.apps.silver.devops.gov.bc.ca
+    stomp: uat-moti-rabbitmq-stomp.apps.silver.devops.gov.bc.ca
+
+allowedNamespace:
+  - name: fdf5df
+    environment: test
