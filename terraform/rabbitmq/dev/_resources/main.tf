@@ -7,6 +7,6 @@ terraform {
   }
 }
 
-resource "rabbitmq_vhost" "sawsx" {
-  name = "sawsx"
-}
+# resource "rabbitmq_vhost" "sawsx" {
+#   name = "sawsx"
+# }
