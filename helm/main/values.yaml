@@ -11,8 +11,7 @@ rabbitmq:
     existingPasswordSecret: rabbitmq-admin # pragma: allowlist secret
     existingErlangSecret: rabbitmq-admin # pragma: allowlist secret
 
-  plugins: "rabbitmq_management rabbitmq_peer_discovery_k8s rabbitmq_web_stomp rabbitmq_auth_backend_oauth2"
-
+  extraPlugins: "rabbitmq_web_stomp rabbitmq_auth_backend_oauth2"
   extraConfiguration: |-
     management.disable_basic_auth = false
     management.oauth_enabled = true
