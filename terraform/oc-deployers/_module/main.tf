@@ -63,8 +63,9 @@ resource "kubernetes_role" "this" {
   rule {
     api_groups = [""]
     resources  = ["events"]
-    verbs      = ["list"]
+    verbs      = ["list", "create"]
   }
+
   rule {
     api_groups = ["image.openshift.io"]
     resources = [
