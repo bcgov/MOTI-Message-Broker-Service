@@ -1,0 +1,11 @@
+apiVersion: porter.devops.gov.bc.ca/v1alpha1
+kind: TransportServerClaim
+metadata:
+  name: {{ include "main.fullname" . }}-transport-server
+spec:
+  monitor:
+    interval: 10
+    timeout: 10
+    type: tcp
+  service: {{ .Values.rabbitmq.fullnameOverride }}
+  servicePort: 5672

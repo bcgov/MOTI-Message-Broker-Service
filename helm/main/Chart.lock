@@ -1,6 +1,6 @@
 dependencies:
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
-  version: 14.7.0
-digest: sha256:3aa53d22359c0841771ab4677f384bed65c23bdc3a4230758a97ccc1a47388b2
-generated: "2024-09-16T12:10:22.657769051-07:00"
+  version: 15.0.3
+digest: sha256:aef19181dc614934bf6014c3cf1847a21f01a4d2cc685b2f13d40e33671b4bc6
+generated: "2025-06-27T11:43:03.032706156-07:00"
