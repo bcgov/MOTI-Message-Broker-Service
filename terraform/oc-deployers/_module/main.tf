@@ -233,6 +233,17 @@ resource "kubernetes_role" "this" {
     resources  = ["processedtemplates"]
     verbs      = ["create"]
   }
+  rule {
+    api_groups = ["porter.devops.gov.bc.ca"]
+    resources  = ["transportserverclaims"]
+    verbs      = [
+      "create",
+      "delete",
+      "get",
+      "patch",
+      "update",
+    ]
+  }
 }
 
 resource "kubernetes_service_account" "this" {
