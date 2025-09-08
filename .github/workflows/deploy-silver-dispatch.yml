@@ -1,4 +1,4 @@
-name: Deploy Environment
+name: Deploy Silver Environment
 
 on:
   workflow_dispatch:
@@ -36,5 +36,6 @@ jobs:
     - name: Deploy apps with Helm chart
       run: |
         make upgrade \
+        CLUSTER=silver \
         NAMESPACE=${{ vars.OPENSHIFT_NAMESPACE }}
       working-directory: ./helm/main
