@@ -1,10 +1,16 @@
 # See https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml
 rabbitmq:
   enabled: false
+
   replicaCount: 1
 
   nameOverride: moti-rabbitmq
   fullnameOverride: moti-rabbitmq
+
+  image:
+    registry: ghcr.io
+    repository: bcgov/bitnami-rabbitmq
+    tag: latest
 
   auth:
     username: admin
