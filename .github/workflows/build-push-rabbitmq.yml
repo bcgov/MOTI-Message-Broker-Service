@@ -1,0 +1,48 @@
+name: Build RabbitMQ image
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: 0 3 * * *
+
+env:
+  GITHUB_REGISTRY: ghcr.io
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-push-rabbitmq:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Fetch RabbitMQ Version
+      id: fetch_version
+      run: |
+        VERSION=$(docker run --rm --entrypoint rabbitmqctl docker.io/bitnamilegacy/rabbitmq:latest version)
+        echo "RabbitMQ version: $VERSION"
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+    - name: Generate Dockerfile
+      run: |
+        echo "FROM docker.io/bitnamilegacy/rabbitmq:latest" > Dockerfile
+
+    - name: Build and Push Docker image
+      uses: egose/actions/docker-build-push@97fa9812f9221e21d14f7b5e11cd149c4c2b93da
+      with:
+        registry-url: ${{ env.GITHUB_REGISTRY }}
+        registry-username: ${{ github.actor }}
+        registry-password: ${{ secrets.GITHUB_TOKEN }}
+        image-name: bcgov/bitnami-rabbitmq
+        docker-context: .
+        docker-file: Dockerfile
+        metadata-tags: |
+          latest
+          ${{ env.VERSION }}
