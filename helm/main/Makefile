@@ -1,14 +1,19 @@
 SHELL := /usr/bin/env bash
 NAME := moti-message-broker
 
+CLUSTER=
 NAMESPACE=
+
+ifndef CLUSTER
+$(error CLUSTER is not set)
+endif
 
 ifndef NAMESPACE
 $(error NAMESPACE is not set)
 endif
 
 define arguments
-	"${NAME}" . -n "${NAMESPACE}" -f values.yaml -f "values-${NAMESPACE}.yaml"
+	"${NAME}" . -n "${NAMESPACE}" -f values.yaml -f "values-${CLUSTER}-${NAMESPACE}.yaml"
 endef
 
 .PHONY: helm-dep

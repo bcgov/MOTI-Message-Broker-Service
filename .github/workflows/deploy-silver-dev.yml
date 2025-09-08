@@ -36,5 +36,6 @@ jobs:
     - name: Deploy apps with Helm chart
       run: |
         make upgrade \
+        CLUSTER=silver \
         NAMESPACE=${{ vars.OPENSHIFT_NAMESPACE }}
       working-directory: ./helm/main
