@@ -1,6 +1,10 @@
 rabbitmq:
   enabled: true
   replicaCount: 2
+
+  image:
+    tag: 4.1.2
+
   hosts:
     management: dev-moti-rabbitmq.apps.silver.devops.gov.bc.ca
     stomp: dev-moti-rabbitmq-stomp.apps.silver.devops.gov.bc.ca
