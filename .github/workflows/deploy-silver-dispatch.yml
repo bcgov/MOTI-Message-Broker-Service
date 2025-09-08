@@ -1,4 +1,4 @@
-name: Deploy Environment
+name: Deploy Silver Environment
 
 on:
   workflow_dispatch:
