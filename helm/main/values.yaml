@@ -2,6 +2,10 @@
 rabbitmq:
   enabled: false
 
+  global:
+    security:
+      allowInsecureImages: true
+
   replicaCount: 1
 
   nameOverride: moti-rabbitmq
