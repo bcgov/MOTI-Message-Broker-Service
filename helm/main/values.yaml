@@ -2,6 +2,13 @@
 rabbitmq:
   enabled: false
 
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+
   global:
     security:
       allowInsecureImages: true
@@ -46,15 +53,15 @@ rabbitmq:
     forceBoot: true
 
   extraContainerPorts:
-  - name: stomp
-    containerPort: 15674
-    protocol: TCP
+    - name: stomp
+      containerPort: 15674
+      protocol: TCP
   service:
     extraPorts:
-    - name: stomp
-      targetPort: stomp
-      port: 15674
-      protocol: TCP
+      - name: stomp
+        targetPort: stomp
+        port: 15674
+        protocol: TCP
   persistence:
     enabled: true
     size: 300Mi
