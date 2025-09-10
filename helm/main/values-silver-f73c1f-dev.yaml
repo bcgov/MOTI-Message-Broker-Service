@@ -2,6 +2,9 @@ rabbitmq:
   enabled: true
   replicaCount: 2
 
+  tsc:
+    enabled: true
+
   image:
     tag: 4.1.2
 

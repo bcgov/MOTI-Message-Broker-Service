@@ -1,3 +1,4 @@
+{{- if .Values.rabbitmq.tsc.enabled }}
 apiVersion: porter.devops.gov.bc.ca/v1alpha1
 kind: TransportServerClaim
 metadata:
@@ -9,3 +10,4 @@ spec:
     type: tcp
   service: {{ .Values.rabbitmq.fullnameOverride }}
   servicePort: 5672
+{{- end }}
