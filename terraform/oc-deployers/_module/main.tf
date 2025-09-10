@@ -154,11 +154,12 @@ resource "kubernetes_role" "this" {
       "list",
       "patch",
       "update",
+      "watch",
     ]
   }
   rule {
     api_groups = ["networking.k8s.io"]
-    resources  = ["networkpolicies"]
+    resources  = ["networkpolicies", "ingresses"]
     verbs = [
       "create",
       "delete",
@@ -236,7 +237,7 @@ resource "kubernetes_role" "this" {
   rule {
     api_groups = ["porter.devops.gov.bc.ca"]
     resources  = ["transportserverclaims"]
-    verbs      = [
+    verbs = [
       "create",
       "delete",
       "get",
@@ -260,6 +261,19 @@ resource "kubernetes_service_account" "this" {
       secret
     ]
   }
+}
+
+resource "kubernetes_secret" "this" {
+  metadata {
+    name      = var.name
+    namespace = kubernetes_service_account.this.metadata.0.namespace
+    annotations = {
+      "kubernetes.io/service-account.name" = kubernetes_service_account.this.metadata.0.name
+    }
+  }
+
+  type                           = "kubernetes.io/service-account-token"
+  wait_for_service_account_token = true
 }
 
 resource "kubernetes_role_binding" "this" {
