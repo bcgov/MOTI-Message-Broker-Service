@@ -9,6 +9,9 @@ rabbitmq:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
+  tsc:
+    enabled: false
+
   global:
     security:
       allowInsecureImages: true

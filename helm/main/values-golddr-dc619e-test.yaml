@@ -9,15 +9,12 @@ rabbitmq:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  tsc:
-    enabled: true
-
   image:
     tag: 4.1.2
 
   hosts:
-    management: uat-moti-rabbitmq.apps.gold.devops.gov.bc.ca
-    stomp: uat-moti-rabbitmq-stomp.apps.gold.devops.gov.bc.ca
+    management: uat-moti-rabbitmq.apps.golddr.devops.gov.bc.ca
+    stomp: uat-moti-rabbitmq-stomp.apps.golddr.devops.gov.bc.ca
 
   extraConfiguration: |-
     management.disable_basic_auth = false

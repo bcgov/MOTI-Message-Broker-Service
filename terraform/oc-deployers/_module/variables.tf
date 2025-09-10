@@ -11,3 +11,8 @@ variable "privileged_namespaces" {
   description = "Openshift Projects to assign privileges to the service account"
   type        = list(string)
 }
+
+variable "include_transport_rule" {
+  type    = bool
+  default = false
+}

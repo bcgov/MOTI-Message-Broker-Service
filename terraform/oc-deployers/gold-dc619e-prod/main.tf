@@ -1,9 +1,10 @@
 module "oc_deployer" {
   source = "../_module"
 
-  name                  = "oc-deployer"
-  namespace             = "dc619e-prod"
-  privileged_namespaces = ["dc619e-prod"]
+  name                   = "oc-deployer"
+  namespace              = "dc619e-prod"
+  privileged_namespaces  = ["dc619e-prod"]
+  include_transport_rule = true
 }
 
 output "service_account_id" {
