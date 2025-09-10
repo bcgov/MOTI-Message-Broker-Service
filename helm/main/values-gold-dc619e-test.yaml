@@ -1,0 +1,32 @@
+rabbitmq:
+  enabled: true
+  replicaCount: 1
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+
+  image:
+    tag: 4.1.2
+
+  hosts:
+    management: uat-moti-rabbitmq.apps.gold.devops.gov.bc.ca
+    stomp: uat-moti-rabbitmq-stomp.apps.gold.devops.gov.bc.ca
+
+  extraConfiguration: |-
+    management.disable_basic_auth = false
+    management.oauth_enabled = true
+
+    auth_backends.1 = rabbit_auth_backend_oauth2
+    auth_backends.2 = rabbit_auth_backend_internal
+
+    auth_oauth2.resource_server_id = rabbitmq-auth
+    auth_oauth2.jwks_url = https://test.loginproxy.gov.bc.ca/auth/realms/moti-custom/protocol/openid-connect/certs
+    auth_oauth2.scope_prefix = rabbitmq.
+    auth_oauth2.additional_scopes_key = roles
+    auth_oauth2.verify_aud = true
+
+allowedNamespace: []

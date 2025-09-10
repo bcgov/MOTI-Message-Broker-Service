@@ -16,6 +16,4 @@ rabbitmq:
     management: dev-moti-rabbitmq.apps.gold.devops.gov.bc.ca
     stomp: dev-moti-rabbitmq-stomp.apps.gold.devops.gov.bc.ca
 
-allowedNamespace:
-  - name: dc619e
-    environment: dev
+allowedNamespace: []
