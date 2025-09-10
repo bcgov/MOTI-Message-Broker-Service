@@ -234,16 +234,20 @@ resource "kubernetes_role" "this" {
     resources  = ["processedtemplates"]
     verbs      = ["create"]
   }
-  rule {
-    api_groups = ["porter.devops.gov.bc.ca"]
-    resources  = ["transportserverclaims"]
-    verbs = [
-      "create",
-      "delete",
-      "get",
-      "patch",
-      "update",
-    ]
+
+  dynamic "rule" {
+    for_each = toset(var.include_transport_rule ? ["1"] : [])
+    content {
+      api_groups = ["porter.devops.gov.bc.ca"]
+      resources  = ["transportserverclaims"]
+      verbs = [
+        "create",
+        "delete",
+        "get",
+        "patch",
+        "update",
+      ]
+    }
   }
 }
 

@@ -1,9 +1,10 @@
 module "oc_deployer" {
   source = "../_module"
 
-  name                  = "oc-deployer"
-  namespace             = "f73c1f-prod"
-  privileged_namespaces = ["f73c1f-prod"]
+  name                   = "oc-deployer"
+  namespace              = "f73c1f-prod"
+  privileged_namespaces  = ["f73c1f-prod"]
+  include_transport_rule = true
 }
 
 output "service_account_id" {
