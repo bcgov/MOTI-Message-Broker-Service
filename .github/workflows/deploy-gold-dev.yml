@@ -1,14 +1,11 @@
-name: Deploy Silver Environment
+name: Deploy Gold Dev Environment
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: Environment
-        required: true
-        default: dev
-        type: choice
-        options: [dev, test, prod]
+  push:
+    branches:
+    - main
+    paths:
+    - helm/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,8 +18,8 @@ jobs:
     permissions:
       contents: read
     environment:
-      name: ${{ inputs.environment }}
-      url: ${{ inputs.environment == 'prod' && 'https://moti-rabbitmq.apps.silver.devops.gov.bc.ca' || inputs.environment == 'test' && 'https://test-moti-rabbitmq.apps.silver.devops.gov.bc.ca' || 'https://dev-moti-rabbitmq.apps.silver.devops.gov.bc.ca' }}
+      name: gold-dev
+      url: https://dev-moti-rabbitmq.apps.gold.devops.gov.bc.ca
 
     steps:
     - uses: hmarr/debug-action@f7318c783045ac39ed9bb497e22ce835fdafbfe6
@@ -39,6 +36,6 @@ jobs:
     - name: Deploy apps with Helm chart
       run: |
         make upgrade \
-        CLUSTER=silver \
+        CLUSTER=gold \
         NAMESPACE=${{ vars.OPENSHIFT_NAMESPACE }}
       working-directory: ./helm/main
