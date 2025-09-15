@@ -9,6 +9,10 @@ rabbitmq:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
+  backup:
+    enabled: false
+    schedule: "0 0 * * *" # every day at midnight UTC
+
   tsc:
     enabled: false
 
