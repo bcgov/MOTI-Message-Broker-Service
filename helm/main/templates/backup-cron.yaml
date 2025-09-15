@@ -1,0 +1,68 @@
+{{- if .Values.rabbitmq.backup.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "main.fullname" . }}-backup-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Mi
+  storageClassName: netapp-file-standard
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "main.fullname" . }}-config-backup
+spec:
+  schedule: {{ .Values.rabbitmq.backup.schedule | quote }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ include "main.fullname" . }}-backup
+              image: curlimages/curl:8.16.0
+              # kubectl create job --from=cronjob/moti-message-broker-main-config-backup rabbitmq-backup-manual-$(date +%s)
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -e
+                  BACKUP_FILE="/backup/rabbitmq-defs-$(date +%F_%H-%M).json"
+
+                  echo "Downloading RabbitMQ definitions to $BACKUP_FILE"
+                  curl -u "${RABBITMQ_USER}:${RABBITMQ_PASS}" -k ${RABBITMQ_URL}/api/definitions > "$BACKUP_FILE"
+                  echo "Backup saved."
+
+                  echo "Current backup files:"
+                  ls -lh /backup/rabbitmq-defs-*.json 2>/dev/null || echo "No backup files found."
+
+                  echo "Deleting backups older than ${RETENTION_DAYS} days..."
+                  find /backup -name "rabbitmq-defs-*.json" -type f -mtime +${RETENTION_DAYS} -exec rm -f {} \;
+                  echo "Cleanup complete."
+
+                  echo "Remaining backup files:"
+                  ls -lh /backup/rabbitmq-defs-*.json 2>/dev/null || echo "No backup files remain."
+              env:
+                - name: RABBITMQ_USER
+                  value: admin
+                - name: RABBITMQ_PASS
+                  valueFrom:
+                    secretKeyRef:
+                      name: rabbitmq-admin
+                      key: rabbitmq-password
+                - name: RABBITMQ_URL
+                  value: "http://moti-rabbitmq:15672" # RabbitMQ k8s internal URL
+                - name: RETENTION_DAYS
+                  value: "7" # keep backups for 7 days
+              volumeMounts:
+                - name: backup-storage
+                  mountPath: /backup
+          restartPolicy: OnFailure
+          volumes:
+            - name: backup-storage
+              persistentVolumeClaim:
+                claimName: {{ include "main.fullname" . }}-backup-pvc
+{{- end }}

@@ -1,2 +1,1 @@
-rabbitmq-defs.json
-rabbitmq-defs-filtered.json
+rabbitmq-defs*.json

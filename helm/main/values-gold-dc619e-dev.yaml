@@ -9,6 +9,9 @@ rabbitmq:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
+  backup:
+    enabled: false
+
   tsc:
     enabled: true
 
