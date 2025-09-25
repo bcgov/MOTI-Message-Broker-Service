@@ -32,4 +32,6 @@ rabbitmq:
     auth_oauth2.additional_scopes_key = roles
     auth_oauth2.verify_aud = true
 
-allowedNamespace: []
+allowedNamespace:
+  - name: fb3c60
+    environment: test
