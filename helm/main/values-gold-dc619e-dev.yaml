@@ -22,4 +22,6 @@ rabbitmq:
     management: dev-moti-rabbitmq.apps.gold.devops.gov.bc.ca
     stomp: dev-moti-rabbitmq-stomp.apps.gold.devops.gov.bc.ca
 
-allowedNamespace: []
+allowedNamespace:
+  - name: fb3c60
+    environment: dev
