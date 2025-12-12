@@ -1,0 +1,38 @@
+name: Build RabbitMQ image - Managed
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - dockerfiles/**
+
+env:
+  GITHUB_REGISTRY: ghcr.io
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-push-4_2-debian_12:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+    - uses: hmarr/debug-action@f7318c783045ac39ed9bb497e22ce835fdafbfe6
+    - uses: actions/checkout@6d193bf28034eafb982f37bd894289fe649468fc
+
+    - name: Setup Tools
+      uses: ./.github/actions/setup-tools
+
+    - name: Build and Push
+      uses: egose/actions/docker-build-push@c3000c229fec8ddd3d6f2d326900de8898168f3e
+      with:
+        registry-url: ${{ env.GITHUB_REGISTRY }}
+        registry-username: ${{ github.actor }}
+        registry-password: ${{ secrets.GITHUB_TOKEN }}
+        image-name: bcgov/bitnami-rabbitmq
+        docker-context: dockerfiles/4.2/debian-12
+        docker-file: dockerfiles/4.2/debian-12/Dockerfile
+        metadata-tags: |
+          4.2-debian-12
