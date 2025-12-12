@@ -54,6 +54,9 @@ RUN /opt/bitnami/scripts/locales/generate-locales.sh
 
 COPY rootfs /
 RUN chmod +x /opt/bitnami/scripts/rabbitmq/postunpack.sh
+RUN chmod +x /opt/bitnami/scripts/rabbitmq/entrypoint.sh
+RUN chmod +x /opt/bitnami/scripts/rabbitmq/run.sh
+
 RUN /opt/bitnami/scripts/rabbitmq/postunpack.sh
 ENV APP_VERSION="4.2.1" \
     BITNAMI_APP_NAME="rabbitmq" \
