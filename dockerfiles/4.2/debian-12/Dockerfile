@@ -21,7 +21,6 @@ ENV HOME="/opt/bitnami/rabbitmq/.rabbitmq" \
     OS_NAME="linux" \
     PATH="/opt/bitnami/erlang/bin:/opt/bitnami/rabbitmq/sbin:$PATH"
 
-COPY prebuildfs /
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN install_packages ca-certificates curl libgcc-s1 libssl3 libstdc++6 libtinfo6 locales procps zlib1g
@@ -50,6 +49,7 @@ RUN update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX && \
     echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 RUN /opt/bitnami/scripts/locales/generate-locales.sh
 
+COPY prebuildfs /
 COPY rootfs /
 RUN /opt/bitnami/scripts/rabbitmq/postunpack.sh
 ENV APP_VERSION="4.2.1" \
