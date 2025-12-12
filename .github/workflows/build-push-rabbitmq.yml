@@ -35,7 +35,7 @@ jobs:
         echo "FROM docker.io/bitnamilegacy/rabbitmq:latest" > Dockerfile
 
     - name: Build and Push Docker image
-      uses: egose/actions/docker-build-push@97fa9812f9221e21d14f7b5e11cd149c4c2b93da
+      uses: egose/actions/docker-build-push@c3000c229fec8ddd3d6f2d326900de8898168f3e
       with:
         registry-url: ${{ env.GITHUB_REGISTRY }}
         registry-username: ${{ github.actor }}
