@@ -21,10 +21,12 @@ ENV HOME="/opt/bitnami/rabbitmq/.rabbitmq" \
     OS_NAME="linux" \
     PATH="/opt/bitnami/erlang/bin:/opt/bitnami/rabbitmq/sbin:$PATH"
 
-COPY prebuildfs /
-SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN install_packages ca-certificates curl libgcc-s1 libssl3 libstdc++6 libtinfo6 locales procps zlib1g
+
+COPY prebuildfs /
+SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
+
 RUN --mount=type=secret,id=downloads_url,env=SECRET_DOWNLOADS_URL \
     DOWNLOADS_URL=${SECRET_DOWNLOADS_URL:-${DOWNLOADS_URL}} ; \
     mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ || exit 1 ; \
