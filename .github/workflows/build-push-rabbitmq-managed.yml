@@ -25,6 +25,9 @@ jobs:
     - name: Setup Tools
       uses: ./.github/actions/setup-tools
 
+    - name: Set build timestamp
+      run: echo "BUILD_TIME=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+
     - name: Build and Push
       uses: egose/actions/docker-build-push@c3000c229fec8ddd3d6f2d326900de8898168f3e
       with:
@@ -35,4 +38,4 @@ jobs:
         docker-context: dockerfiles/4.2/debian-12
         docker-file: dockerfiles/4.2/debian-12/Dockerfile
         metadata-tags: |
-          4.2-debian-12
+          4.2-debian-12-${{ env.BUILD_TIME }}
