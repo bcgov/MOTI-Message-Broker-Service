@@ -23,6 +23,7 @@ ENV HOME="/opt/bitnami/rabbitmq/.rabbitmq" \
 
 COPY prebuildfs /
 RUN find / -type f -name "*.sh" -exec chmod +x {} \;
+RUN chmod +x /usr/sbin/install_packages
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN install_packages ca-certificates curl libgcc-s1 libssl3 libstdc++6 libtinfo6 locales procps zlib1g
