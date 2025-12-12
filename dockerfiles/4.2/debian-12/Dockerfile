@@ -64,7 +64,7 @@ ENV APP_VERSION="4.2.1" \
 
 EXPOSE 4369 5551 5552 5671 5672 15671 15672 25672
 
-RUN chmod 755 /opt/bitnami/scripts/rabbitmq/setup.sh
+# RUN chmod 755 /opt/bitnami/scripts/rabbitmq/setup.sh
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/rabbitmq/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/rabbitmq/run.sh" ]
