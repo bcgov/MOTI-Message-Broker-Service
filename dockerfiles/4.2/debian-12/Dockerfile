@@ -53,6 +53,7 @@ RUN update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX && \
 RUN /opt/bitnami/scripts/locales/generate-locales.sh
 
 COPY rootfs /
+RUN chmod +x /opt/bitnami/scripts/rabbitmq/postunpack.sh
 RUN /opt/bitnami/scripts/rabbitmq/postunpack.sh
 ENV APP_VERSION="4.2.1" \
     BITNAMI_APP_NAME="rabbitmq" \
