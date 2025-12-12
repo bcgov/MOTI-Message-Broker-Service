@@ -29,6 +29,7 @@ fi
 
 if [[ "$1" = "/opt/bitnami/scripts/rabbitmq/run.sh" ]]; then
     info "** Starting RabbitMQ setup **"
+    chmod 755 /opt/bitnami/scripts/rabbitmq/setup.sh
     /opt/bitnami/scripts/rabbitmq/setup.sh
     info "** RabbitMQ setup finished! **"
 fi
