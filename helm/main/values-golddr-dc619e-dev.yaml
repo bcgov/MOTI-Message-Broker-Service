@@ -10,7 +10,7 @@ rabbitmq:
     targetMemoryUtilizationPercentage: 80
 
   image:
-    tag: 4.1.2
+    tag: 4.2-debian-12-20251212-224016
 
   hosts:
     management: dev-moti-rabbitmq.apps.golddr.devops.gov.bc.ca
