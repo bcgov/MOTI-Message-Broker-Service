@@ -6,7 +6,7 @@ rabbitmq:
     enabled: true
 
   image:
-    tag: 4.1.2
+    tag: 4.2-debian-12-20251212-224016
 
   hosts:
     management: moti-rabbitmq.apps.silver.devops.gov.bc.ca
