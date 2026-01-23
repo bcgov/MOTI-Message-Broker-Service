@@ -1,0 +1,821 @@
+$ kc logs moti-rabbitmq-0  --follow
+Defaulted container "rabbitmq" out of: rabbitmq, prepare-plugins-dir (init)
+rabbitmq 19:22:25.22 INFO  ==>
+rabbitmq 19:22:25.22 INFO  ==> Welcome to the Bitnami rabbitmq container
+rabbitmq 19:22:25.22 INFO  ==> Subscribe to project updates by watching https://github.com/bitnami/containers
+rabbitmq 19:22:25.22 INFO  ==> Did you know there are enterprise versions of the Bitnami catalog? For enhanced secure software supply chain features, unlimited pulls from Docker, LTS support, or application customization, see Bitnami Premium or Tanzu Application Catalog. See https://www.arrow.com/globalecs/na/vendors/bitnami/ for more information.
+rabbitmq 19:22:25.23 INFO  ==>
+rabbitmq 19:22:25.23 INFO  ==> ** Starting RabbitMQ setup **
+rabbitmq 19:22:25.27 INFO  ==> Validating settings in RABBITMQ_* env vars..
+rabbitmq 19:22:25.28 INFO  ==> Initializing RabbitMQ...
+rabbitmq 19:22:25.37 INFO  ==> Persisted data detected. Restoring...
+rabbitmq 19:22:25.37 WARN  ==> Forcing node to start...
+rabbitmq 19:22:27.97 INFO  ==> No custom scripts in /docker-entrypoint-initdb.d
+
+rabbitmq 19:22:27.97 INFO  ==> ** RabbitMQ setup finished! **
+rabbitmq 19:22:27.98 INFO  ==> ** Starting RabbitMQ **
+Error: unable to perform an operation on node 'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'. Please see diagnostics information and suggestions below.
+
+Most common reasons for this are:
+
+ * Target node is unreachable (e.g. due to hostname resolution, TCP connection or firewall issues)
+ * CLI tool fails to authenticate with the server (e.g. due to CLI tool's Erlang cookie not matching that of the server)
+ * Target node is not running
+
+In addition to the diagnostics info below:
+
+ * See the CLI, clustering and networking guides on https://rabbitmq.com/documentation.html to learn more
+ * Consult server logs on node rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+ * If target node is configured to use long node names, don't forget to use --longnames with CLI tools
+
+DIAGNOSTICS
+===========
+
+attempted to contact: ['rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local']
+
+rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local:
+  * connected to epmd (port 4369) on moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+  * epmd reports: node 'rabbit' not running at all
+                  no other nodes on moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+  * suggestion: start the node
+
+Current node details:
+ * node name: 'rabbitmqcli-715-rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'
+ * effective user's home directory: /opt/bitnami/rabbitmq/.rabbitmq
+ * Erlang cookie hash: SIb22spsdtux/QuK1NRFZA==
+
+Error: this command requires the 'rabbit' app to be running on the target node. Start it with 'rabbitmqctl start_app'.
+Arguments given:
+        cluster_status
+
+Usage
+
+rabbitmqctl [--node <node>] [--longnames] [--quiet] cluster_status [--timeout <timeout>]
+2026-01-23 19:22:36.881891+00:00 [notice] <0.45.0> Application syslog exited with reason: stopped
+2026-01-23 19:22:36.885136+00:00 [notice] <0.209.0> Logging: switching to configured handler(s); following messages may not be visible in this log output
+2026-01-23 19:22:36.885503+00:00 [notice] <0.209.0> Logging: configured log handlers are now ACTIVE
+2026-01-23 19:22:36.974796+00:00 [info] <0.209.0> ra: starting system coordination
+2026-01-23 19:22:36.974898+00:00 [info] <0.209.0> starting Ra system: coordination in directory: /opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+2026-01-23 19:22:36.983757+00:00 [info] <0.220.0> ra_coordination_log_ets: in system coordination initialising. Mem table opts: [set,{write_concurrency,auto},public,{compressed,false}]
+2026-01-23 19:22:37.270448+00:00 [info] <0.228.0> ra system 'coordination' running pre init for 1 registered servers
+2026-01-23 19:22:37.378805+00:00 [info] <0.229.0> ra: meta data store initialised for system coordination. 1 record(s) recovered
+2026-01-23 19:22:37.387731+00:00 [notice] <0.234.0> WAL: ra_coordination_log_wal init, mem-tables table name: ra_coordination_log_open_mem_tables
+2026-01-23 19:22:37.478092+00:00 [info] <0.209.0> ra: starting system quorum_queues
+2026-01-23 19:22:37.478173+00:00 [info] <0.209.0> starting Ra system: quorum_queues in directory: /opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/quorum/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+2026-01-23 19:22:37.479072+00:00 [info] <0.238.0> ra_log_ets: in system quorum_queues initialising. Mem table opts: [set,{write_concurrency,auto},public,{compressed,true}]
+2026-01-23 19:22:37.480210+00:00 [info] <0.242.0> ra system 'quorum_queues' running pre init for 0 registered servers
+2026-01-23 19:22:37.481216+00:00 [info] <0.243.0> ra: meta data store initialised for system quorum_queues. 0 record(s) recovered
+2026-01-23 19:22:37.481710+00:00 [notice] <0.248.0> WAL: ra_log_wal init, mem-tables table name: ra_log_open_mem_tables
+2026-01-23 19:22:37.485499+00:00 [info] <0.250.0> ra_system_recover: ra system 'quorum_queues' server recovery strategy rabbit_quorum_queue:system_recover
+2026-01-23 19:22:37.485604+00:00 [info] <0.250.0> [rabbit_quorum_queue:system_recover/1] rabbit not booted, skipping queue recovery
+2026-01-23 19:22:37.485740+00:00 [info] <0.209.0> ra: starting system coordination
+2026-01-23 19:22:37.485762+00:00 [info] <0.209.0> starting Ra system: coordination in directory: /opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> ** State machine rabbitmq_metadata terminating
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> ** Last event = {internal,{go,{#Ref<0.2150624529.794558465.194711>,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                <0.209.0>}}}
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> ** When server state  = {post_init,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                          #{id =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                             {rabbitmq_metadata,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                              'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            machine =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                             {module,khepri_machine,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                              #{member =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                 {rabbitmq_metadata,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                store_id => rabbitmq_metadata}},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            parent => <0.251.0>,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            friendly_name => "RabbitMQ metadata store",
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            cluster_name => rabbitmq_metadata,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            uid => <<"RABBITO8YY2ZNY8PQN">>,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            initial_members => [],
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            log_init_args => #{uid => <<"RABBITO8YY2ZNY8PQN">>},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            tick_timeout => 1000,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            system_config =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                             #{message_queue_data => off_heap,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               name => coordination,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               names =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                #{directory => ra_coordination_directory,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  directory_rev =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                   ra_coordination_directory_reverse,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  log_ets => ra_coordination_log_ets,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  log_meta => ra_coordination_log_meta,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  log_sup => ra_coordination_log_sup,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  open_mem_tbls =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                   ra_coordination_log_open_mem_tables,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  segment_writer =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                   ra_coordination_segment_writer,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  server_sup => ra_coordination_server_sup_sup,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  wal => ra_coordination_log_wal,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                  wal_sup => ra_coordination_log_wal_sup},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               data_dir =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_max_size_bytes => 64000000,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_max_batch_size => 4096,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_max_entries => undefined,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               compress_mem_tables => false,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               default_max_append_entries_rpc_batch_size => 128,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               segment_compute_checksums => true,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               server_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_compute_checksums => true,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_data_dir =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                                "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               segment_max_entries => 4096,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               segment_max_pending => 1024,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               segment_max_size_bytes => 64000000,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_write_strategy => default,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_sync_method => datasync,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_garbage_collect => false,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_pre_allocate => false,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               wal_min_heap_size => 233,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               server_min_heap_size => 233,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               default_max_pipeline_count => 4096,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               snapshot_chunk_size => 1000000,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               receive_snapshot_timeout => 30000,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               low_priority_commands_flush_size => 16,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               low_priority_commands_in_memory_size => 16,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               machine_upgrade_strategy => all},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            has_changed => false,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            metrics_labels =>
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                             #{module => rabbit_khepri,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                               ra_system => coordination},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            broadcast_time => 100,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            install_snap_rpc_timeout => 120000,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                            await_condition_timeout => 30000}}
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> ** Reason for termination = error:function_clause
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> ** Callback modules = [ra_server_proc]
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> ** Callback mode = [state_functions,state_enter]
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> ** Stacktrace =
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0> **  [{khepri_machine,which_module,
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                      [2],
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>                      [{file,"src/khepri_machine.erl"},{line,1650}]},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>      {ra_machine,which_module,2,[{file,"src/ra_machine.erl"},{line,367}]},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>      {ra_server,init,1,[{file,"src/ra_server.erl"},{line,376}]},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>      {ra_server_proc,do_init,1,[{file,"src/ra_server_proc.erl"},{line,334}]},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>      {ra_server_proc,post_init,3,[{file,"src/ra_server_proc.erl"},{line,391}]},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>      {gen_statem,loop_state_callback,11,[{file,"gen_statem.erl"},{line,3735}]},
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>      {proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,329}]}]
+2026-01-23 19:22:37.786431+00:00 [error] <0.252.0>
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>   crasher:
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     initial call: ra_server_proc:init/1
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     pid: <0.252.0>
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     registered_name: rabbitmq_metadata
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     exception error: no function clause matching
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>                      khepri_machine:which_module(2) (src/khepri_machine.erl, line 1650)
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>       in function  ra_machine:which_module/2 (src/ra_machine.erl, line 367)
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>       in call from ra_server:init/1 (src/ra_server.erl, line 376)
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>       in call from ra_server_proc:do_init/1 (src/ra_server_proc.erl, line 334)
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>       in call from ra_server_proc:post_init/3 (src/ra_server_proc.erl, line 391)
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>       in call from gen_statem:loop_state_callback/11 (gen_statem.erl, line 3735)
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     ancestors: [<0.251.0>,ra_coordination_server_sup_sup,<0.219.0>,
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>                   ra_systems_sup,ra_sup,<0.183.0>]
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     message_queue_len: 0
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     messages: []
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     links: [<0.251.0>]
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     dictionary: []
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     trap_exit: true
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     status: running
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     heap_size: 28690
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     stack_size: 29
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>     reductions: 105981
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>   neighbours:
+2026-01-23 19:22:37.787122+00:00 [error] <0.252.0>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>     supervisor: {<0.251.0>,ra_server_sup}
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>     errorContext: child_terminated
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>     reason: {function_clause,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                 [{khepri_machine,which_module,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      [2],
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      [{file,"src/khepri_machine.erl"},{line,1650}]},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                  {ra_machine,which_module,2,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      [{file,"src/ra_machine.erl"},{line,367}]},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                  {ra_server,init,1,[{file,"src/ra_server.erl"},{line,376}]},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                  {ra_server_proc,do_init,1,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      [{file,"src/ra_server_proc.erl"},{line,334}]},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                  {ra_server_proc,post_init,3,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      [{file,"src/ra_server_proc.erl"},{line,391}]},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                  {gen_statem,loop_state_callback,11,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      [{file,"gen_statem.erl"},{line,3735}]},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                  {proc_lib,init_p_do_apply,3,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      [{file,"proc_lib.erl"},{line,329}]}]}
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>     offender: [{pid,<0.252.0>},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                {id,rabbitmq_metadata},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                {mfargs,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                 {ra_server_proc,start_link,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                  [#{id =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      {rabbitmq_metadata,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                       'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     machine =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      {module,khepri_machine,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                       #{member =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                          {rabbitmq_metadata,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                         store_id => rabbitmq_metadata}},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     parent => <0.251.0>,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     friendly_name => "RabbitMQ metadata store",
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     cluster_name => rabbitmq_metadata,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     reply_to =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      {#Ref<0.2150624529.794558465.194711>,<0.209.0>},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     uid => <<"RABBITO8YY2ZNY8PQN">>,initial_members => [],
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     log_init_args => #{uid => <<"RABBITO8YY2ZNY8PQN">>},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     tick_timeout => 1000,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     system_config =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      #{message_queue_data => off_heap,name => coordination,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        names =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                         #{directory => ra_coordination_directory,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           directory_rev => ra_coordination_directory_reverse,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           log_ets => ra_coordination_log_ets,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           log_meta => ra_coordination_log_meta,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           log_sup => ra_coordination_log_sup,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           open_mem_tbls => ra_coordination_log_open_mem_tables,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           segment_writer => ra_coordination_segment_writer,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           server_sup => ra_coordination_server_sup_sup,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           wal => ra_coordination_log_wal,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                           wal_sup => ra_coordination_log_wal_sup},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        data_dir =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_max_size_bytes => 64000000,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_max_batch_size => 4096,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_max_entries => undefined,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        compress_mem_tables => false,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        default_max_append_entries_rpc_batch_size => 128,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        segment_compute_checksums => true,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        server_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_compute_checksums => true,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_data_dir =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        segment_max_entries => 4096,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        segment_max_pending => 1024,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        segment_max_size_bytes => 64000000,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_write_strategy => default,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_sync_method => datasync,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_garbage_collect => false,wal_pre_allocate => false,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        wal_min_heap_size => 233,server_min_heap_size => 233,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        default_max_pipeline_count => 4096,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        snapshot_chunk_size => 1000000,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        receive_snapshot_timeout => 30000,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        low_priority_commands_flush_size => 16,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        low_priority_commands_in_memory_size => 16,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                        machine_upgrade_strategy => all},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     has_changed => false,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     metrics_labels =>
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                      #{module => rabbit_khepri,ra_system => coordination},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     broadcast_time => 100,install_snap_rpc_timeout => 120000,
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                     await_condition_timeout => 30000}]}},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                {restart_type,transient},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                {significant,false},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                {shutdown,5000},
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>                {child_type,worker}]
+2026-01-23 19:22:37.873904+00:00 [error] <0.251.0>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> ** State machine rabbitmq_metadata terminating
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> ** Last event = {internal,{go,{#Ref<0.2150624529.794558465.194711>,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                <0.209.0>}}}
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> ** When server state  = {post_init,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                          #{id =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                             {rabbitmq_metadata,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                              'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            machine =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                             {module,khepri_machine,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                              #{member =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                 {rabbitmq_metadata,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                store_id => rabbitmq_metadata}},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            parent => <0.251.0>,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            friendly_name => "RabbitMQ metadata store",
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            cluster_name => rabbitmq_metadata,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            uid => <<"RABBITO8YY2ZNY8PQN">>,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            initial_members => [],
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            log_init_args => #{uid => <<"RABBITO8YY2ZNY8PQN">>},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            tick_timeout => 1000,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            system_config =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                             #{message_queue_data => off_heap,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               name => coordination,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               names =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                #{directory => ra_coordination_directory,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  directory_rev =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                   ra_coordination_directory_reverse,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  log_ets => ra_coordination_log_ets,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  log_meta => ra_coordination_log_meta,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  log_sup => ra_coordination_log_sup,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  open_mem_tbls =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                   ra_coordination_log_open_mem_tables,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  segment_writer =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                   ra_coordination_segment_writer,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  server_sup => ra_coordination_server_sup_sup,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  wal => ra_coordination_log_wal,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                  wal_sup => ra_coordination_log_wal_sup},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               data_dir =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_max_size_bytes => 64000000,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_max_batch_size => 4096,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_max_entries => undefined,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               compress_mem_tables => false,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               default_max_append_entries_rpc_batch_size => 128,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               segment_compute_checksums => true,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               server_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_compute_checksums => true,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_data_dir =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                                "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               segment_max_entries => 4096,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               segment_max_pending => 1024,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               segment_max_size_bytes => 64000000,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_write_strategy => default,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_sync_method => datasync,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_garbage_collect => false,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_pre_allocate => false,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               wal_min_heap_size => 233,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               server_min_heap_size => 233,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               default_max_pipeline_count => 4096,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               snapshot_chunk_size => 1000000,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               receive_snapshot_timeout => 30000,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               low_priority_commands_flush_size => 16,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               low_priority_commands_in_memory_size => 16,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               machine_upgrade_strategy => all},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            has_changed => false,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            metrics_labels =>
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                             #{module => rabbit_khepri,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                               ra_system => coordination},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            broadcast_time => 100,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            install_snap_rpc_timeout => 120000,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                            await_condition_timeout => 30000}}
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> ** Reason for termination = error:function_clause
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> ** Callback modules = [ra_server_proc]
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> ** Callback mode = [state_functions,state_enter]
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> ** Stacktrace =
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0> **  [{khepri_machine,which_module,
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                      [2],
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>                      [{file,"src/khepri_machine.erl"},{line,1650}]},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>      {ra_machine,which_module,2,[{file,"src/ra_machine.erl"},{line,367}]},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>      {ra_server,init,1,[{file,"src/ra_server.erl"},{line,376}]},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>      {ra_server_proc,do_init,1,[{file,"src/ra_server_proc.erl"},{line,334}]},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>      {ra_server_proc,post_init,3,[{file,"src/ra_server_proc.erl"},{line,391}]},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>      {gen_statem,loop_state_callback,11,[{file,"gen_statem.erl"},{line,3735}]},
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>      {proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,329}]}]
+2026-01-23 19:22:37.879055+00:00 [error] <0.253.0>
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>   crasher:
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     initial call: ra_server_proc:init/1
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     pid: <0.253.0>
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     registered_name: rabbitmq_metadata
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     exception error: no function clause matching
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>                      khepri_machine:which_module(2) (src/khepri_machine.erl, line 1650)
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>       in function  ra_machine:which_module/2 (src/ra_machine.erl, line 367)
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>       in call from ra_server:init/1 (src/ra_server.erl, line 376)
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>       in call from ra_server_proc:do_init/1 (src/ra_server_proc.erl, line 334)
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>       in call from ra_server_proc:post_init/3 (src/ra_server_proc.erl, line 391)
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>       in call from gen_statem:loop_state_callback/11 (gen_statem.erl, line 3735)
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     ancestors: [<0.251.0>,ra_coordination_server_sup_sup,<0.219.0>,
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>                   ra_systems_sup,ra_sup,<0.183.0>]
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     message_queue_len: 0
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     messages: []
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     links: [<0.251.0>]
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     dictionary: []
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     trap_exit: true
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     status: running
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     heap_size: 46422
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     stack_size: 29
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>     reductions: 102536
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>   neighbours:
+2026-01-23 19:22:37.879553+00:00 [error] <0.253.0>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>     supervisor: {<0.251.0>,ra_server_sup}
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>     errorContext: child_terminated
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>     reason: {function_clause,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                 [{khepri_machine,which_module,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      [2],
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      [{file,"src/khepri_machine.erl"},{line,1650}]},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                  {ra_machine,which_module,2,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      [{file,"src/ra_machine.erl"},{line,367}]},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                  {ra_server,init,1,[{file,"src/ra_server.erl"},{line,376}]},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                  {ra_server_proc,do_init,1,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      [{file,"src/ra_server_proc.erl"},{line,334}]},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                  {ra_server_proc,post_init,3,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      [{file,"src/ra_server_proc.erl"},{line,391}]},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                  {gen_statem,loop_state_callback,11,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      [{file,"gen_statem.erl"},{line,3735}]},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                  {proc_lib,init_p_do_apply,3,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      [{file,"proc_lib.erl"},{line,329}]}]}
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>     offender: [{pid,<0.253.0>},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                {id,rabbitmq_metadata},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                {mfargs,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                 {ra_server_proc,start_link,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                  [#{id =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      {rabbitmq_metadata,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                       'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     machine =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      {module,khepri_machine,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                       #{member =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                          {rabbitmq_metadata,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                         store_id => rabbitmq_metadata}},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     parent => <0.251.0>,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     friendly_name => "RabbitMQ metadata store",
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     cluster_name => rabbitmq_metadata,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     reply_to =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      {#Ref<0.2150624529.794558465.194711>,<0.209.0>},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     uid => <<"RABBITO8YY2ZNY8PQN">>,initial_members => [],
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     log_init_args => #{uid => <<"RABBITO8YY2ZNY8PQN">>},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     tick_timeout => 1000,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     system_config =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      #{message_queue_data => off_heap,name => coordination,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        names =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                         #{directory => ra_coordination_directory,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           directory_rev => ra_coordination_directory_reverse,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           log_ets => ra_coordination_log_ets,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           log_meta => ra_coordination_log_meta,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           log_sup => ra_coordination_log_sup,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           open_mem_tbls => ra_coordination_log_open_mem_tables,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           segment_writer => ra_coordination_segment_writer,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           server_sup => ra_coordination_server_sup_sup,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           wal => ra_coordination_log_wal,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                           wal_sup => ra_coordination_log_wal_sup},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        data_dir =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_max_size_bytes => 64000000,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_max_batch_size => 4096,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_max_entries => undefined,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        compress_mem_tables => false,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        default_max_append_entries_rpc_batch_size => 128,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        segment_compute_checksums => true,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        server_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_compute_checksums => true,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_data_dir =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        segment_max_entries => 4096,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        segment_max_pending => 1024,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        segment_max_size_bytes => 64000000,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_write_strategy => default,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_sync_method => datasync,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_garbage_collect => false,wal_pre_allocate => false,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        wal_min_heap_size => 233,server_min_heap_size => 233,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        default_max_pipeline_count => 4096,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        snapshot_chunk_size => 1000000,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        receive_snapshot_timeout => 30000,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        low_priority_commands_flush_size => 16,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        low_priority_commands_in_memory_size => 16,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                        machine_upgrade_strategy => all},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     has_changed => false,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     metrics_labels =>
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                      #{module => rabbit_khepri,ra_system => coordination},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     broadcast_time => 100,install_snap_rpc_timeout => 120000,
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                     await_condition_timeout => 30000}]}},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                {restart_type,transient},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                {significant,false},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                {shutdown,5000},
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>                {child_type,worker}]
+2026-01-23 19:22:37.879935+00:00 [error] <0.251.0>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> ** State machine rabbitmq_metadata terminating
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> ** Last event = {internal,{go,{#Ref<0.2150624529.794558465.194711>,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                <0.209.0>}}}
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> ** When server state  = {post_init,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                          #{id =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                             {rabbitmq_metadata,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                              'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            machine =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                             {module,khepri_machine,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                              #{member =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                 {rabbitmq_metadata,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                store_id => rabbitmq_metadata}},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            parent => <0.251.0>,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            friendly_name => "RabbitMQ metadata store",
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            cluster_name => rabbitmq_metadata,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            uid => <<"RABBITO8YY2ZNY8PQN">>,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            initial_members => [],
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            log_init_args => #{uid => <<"RABBITO8YY2ZNY8PQN">>},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            tick_timeout => 1000,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            system_config =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                             #{message_queue_data => off_heap,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               name => coordination,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               names =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                #{directory => ra_coordination_directory,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  directory_rev =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                   ra_coordination_directory_reverse,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  log_ets => ra_coordination_log_ets,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  log_meta => ra_coordination_log_meta,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  log_sup => ra_coordination_log_sup,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  open_mem_tbls =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                   ra_coordination_log_open_mem_tables,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  segment_writer =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                   ra_coordination_segment_writer,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  server_sup => ra_coordination_server_sup_sup,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  wal => ra_coordination_log_wal,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                  wal_sup => ra_coordination_log_wal_sup},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               data_dir =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_max_size_bytes => 64000000,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_max_batch_size => 4096,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_max_entries => undefined,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               compress_mem_tables => false,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               default_max_append_entries_rpc_batch_size => 128,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               segment_compute_checksums => true,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               server_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_compute_checksums => true,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_data_dir =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                                "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               segment_max_entries => 4096,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               segment_max_pending => 1024,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               segment_max_size_bytes => 64000000,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_write_strategy => default,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_sync_method => datasync,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_garbage_collect => false,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_pre_allocate => false,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               wal_min_heap_size => 233,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               server_min_heap_size => 233,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               default_max_pipeline_count => 4096,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               snapshot_chunk_size => 1000000,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               receive_snapshot_timeout => 30000,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               low_priority_commands_flush_size => 16,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               low_priority_commands_in_memory_size => 16,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               machine_upgrade_strategy => all},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            has_changed => false,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            metrics_labels =>
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                             #{module => rabbit_khepri,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                               ra_system => coordination},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            broadcast_time => 100,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            install_snap_rpc_timeout => 120000,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                            await_condition_timeout => 30000}}
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> ** Reason for termination = error:function_clause
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> ** Callback modules = [ra_server_proc]
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> ** Callback mode = [state_functions,state_enter]
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> ** Stacktrace =
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0> **  [{khepri_machine,which_module,
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                      [2],
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>                      [{file,"src/khepri_machine.erl"},{line,1650}]},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>      {ra_machine,which_module,2,[{file,"src/ra_machine.erl"},{line,367}]},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>      {ra_server,init,1,[{file,"src/ra_server.erl"},{line,376}]},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>      {ra_server_proc,do_init,1,[{file,"src/ra_server_proc.erl"},{line,334}]},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>      {ra_server_proc,post_init,3,[{file,"src/ra_server_proc.erl"},{line,391}]},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>      {gen_statem,loop_state_callback,11,[{file,"gen_statem.erl"},{line,3735}]},
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>      {proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,329}]}]
+2026-01-23 19:22:37.885273+00:00 [error] <0.254.0>
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>   crasher:
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     initial call: ra_server_proc:init/1
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     pid: <0.254.0>
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     registered_name: rabbitmq_metadata
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     exception error: no function clause matching
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>                      khepri_machine:which_module(2) (src/khepri_machine.erl, line 1650)
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>       in function  ra_machine:which_module/2 (src/ra_machine.erl, line 367)
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>       in call from ra_server:init/1 (src/ra_server.erl, line 376)
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>       in call from ra_server_proc:do_init/1 (src/ra_server_proc.erl, line 334)
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>       in call from ra_server_proc:post_init/3 (src/ra_server_proc.erl, line 391)
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>       in call from gen_statem:loop_state_callback/11 (gen_statem.erl, line 3735)
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     ancestors: [<0.251.0>,ra_coordination_server_sup_sup,<0.219.0>,
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>                   ra_systems_sup,ra_sup,<0.183.0>]
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     message_queue_len: 0
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     messages: []
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     links: [<0.251.0>]
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     dictionary: []
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     trap_exit: true
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     status: running
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     heap_size: 46422
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     stack_size: 29
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>     reductions: 102536
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>   neighbours:
+2026-01-23 19:22:37.885952+00:00 [error] <0.254.0>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>     supervisor: {<0.251.0>,ra_server_sup}
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>     errorContext: child_terminated
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>     reason: {function_clause,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                 [{khepri_machine,which_module,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      [2],
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      [{file,"src/khepri_machine.erl"},{line,1650}]},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                  {ra_machine,which_module,2,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      [{file,"src/ra_machine.erl"},{line,367}]},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                  {ra_server,init,1,[{file,"src/ra_server.erl"},{line,376}]},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                  {ra_server_proc,do_init,1,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      [{file,"src/ra_server_proc.erl"},{line,334}]},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                  {ra_server_proc,post_init,3,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      [{file,"src/ra_server_proc.erl"},{line,391}]},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                  {gen_statem,loop_state_callback,11,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      [{file,"gen_statem.erl"},{line,3735}]},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                  {proc_lib,init_p_do_apply,3,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      [{file,"proc_lib.erl"},{line,329}]}]}
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>     offender: [{pid,<0.254.0>},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                {id,rabbitmq_metadata},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                {mfargs,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                 {ra_server_proc,start_link,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                  [#{id =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      {rabbitmq_metadata,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                       'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     machine =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      {module,khepri_machine,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                       #{member =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                          {rabbitmq_metadata,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                         store_id => rabbitmq_metadata}},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     parent => <0.251.0>,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     friendly_name => "RabbitMQ metadata store",
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     cluster_name => rabbitmq_metadata,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     reply_to =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      {#Ref<0.2150624529.794558465.194711>,<0.209.0>},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     uid => <<"RABBITO8YY2ZNY8PQN">>,initial_members => [],
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     log_init_args => #{uid => <<"RABBITO8YY2ZNY8PQN">>},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     tick_timeout => 1000,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     system_config =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      #{message_queue_data => off_heap,name => coordination,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        names =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                         #{directory => ra_coordination_directory,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           directory_rev => ra_coordination_directory_reverse,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           log_ets => ra_coordination_log_ets,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           log_meta => ra_coordination_log_meta,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           log_sup => ra_coordination_log_sup,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           open_mem_tbls => ra_coordination_log_open_mem_tables,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           segment_writer => ra_coordination_segment_writer,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           server_sup => ra_coordination_server_sup_sup,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           wal => ra_coordination_log_wal,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                           wal_sup => ra_coordination_log_wal_sup},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        data_dir =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_max_size_bytes => 64000000,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_max_batch_size => 4096,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_max_entries => undefined,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        compress_mem_tables => false,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        default_max_append_entries_rpc_batch_size => 128,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        segment_compute_checksums => true,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        server_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_compute_checksums => true,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_data_dir =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        segment_max_entries => 4096,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        segment_max_pending => 1024,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        segment_max_size_bytes => 64000000,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_write_strategy => default,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_sync_method => datasync,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_garbage_collect => false,wal_pre_allocate => false,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        wal_min_heap_size => 233,server_min_heap_size => 233,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        default_max_pipeline_count => 4096,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        snapshot_chunk_size => 1000000,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        receive_snapshot_timeout => 30000,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        low_priority_commands_flush_size => 16,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        low_priority_commands_in_memory_size => 16,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                        machine_upgrade_strategy => all},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     has_changed => false,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     metrics_labels =>
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                      #{module => rabbit_khepri,ra_system => coordination},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     broadcast_time => 100,install_snap_rpc_timeout => 120000,
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                     await_condition_timeout => 30000}]}},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                {restart_type,transient},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                {significant,false},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                {shutdown,5000},
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>                {child_type,worker}]
+2026-01-23 19:22:37.886269+00:00 [error] <0.251.0>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>     supervisor: {<0.251.0>,ra_server_sup}
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>     errorContext: shutdown
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>     reason: reached_max_restart_intensity
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>     offender: [{pid,<0.254.0>},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                {id,rabbitmq_metadata},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                {mfargs,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                 {ra_server_proc,start_link,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                  [#{id =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                      {rabbitmq_metadata,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                       'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     machine =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                      {module,khepri_machine,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                       #{member =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                          {rabbitmq_metadata,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                         store_id => rabbitmq_metadata}},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     parent => <0.251.0>,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     friendly_name => "RabbitMQ metadata store",
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     cluster_name => rabbitmq_metadata,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     reply_to =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                      {#Ref<0.2150624529.794558465.194711>,<0.209.0>},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     uid => <<"RABBITO8YY2ZNY8PQN">>,initial_members => [],
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     log_init_args => #{uid => <<"RABBITO8YY2ZNY8PQN">>},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     tick_timeout => 1000,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     system_config =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                      #{message_queue_data => off_heap,name => coordination,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        names =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                         #{directory => ra_coordination_directory,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           directory_rev => ra_coordination_directory_reverse,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           log_ets => ra_coordination_log_ets,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           log_meta => ra_coordination_log_meta,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           log_sup => ra_coordination_log_sup,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           open_mem_tbls => ra_coordination_log_open_mem_tables,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           segment_writer => ra_coordination_segment_writer,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           server_sup => ra_coordination_server_sup_sup,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           wal => ra_coordination_log_wal,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                           wal_sup => ra_coordination_log_wal_sup},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        data_dir =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_max_size_bytes => 64000000,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_max_batch_size => 4096,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_max_entries => undefined,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        compress_mem_tables => false,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        default_max_append_entries_rpc_batch_size => 128,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        segment_compute_checksums => true,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        server_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_compute_checksums => true,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_min_bin_vheap_size => 46422,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_data_dir =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                         "/opt/bitnami/rabbitmq/.rabbitmq/mnesia/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local/coordination/rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local",
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        segment_max_entries => 4096,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        segment_max_pending => 1024,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        segment_max_size_bytes => 64000000,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_write_strategy => default,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_sync_method => datasync,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_garbage_collect => false,wal_pre_allocate => false,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        wal_min_heap_size => 233,server_min_heap_size => 233,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        default_max_pipeline_count => 4096,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        snapshot_chunk_size => 1000000,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        receive_snapshot_timeout => 30000,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        low_priority_commands_flush_size => 16,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        low_priority_commands_in_memory_size => 16,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                        machine_upgrade_strategy => all},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     has_changed => false,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     metrics_labels =>
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                      #{module => rabbit_khepri,ra_system => coordination},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     broadcast_time => 100,install_snap_rpc_timeout => 120000,
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                     await_condition_timeout => 30000}]}},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                {restart_type,transient},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                {significant,false},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                {shutdown,5000},
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>                {child_type,worker}]
+2026-01-23 19:22:37.886913+00:00 [error] <0.251.0>
+2026-01-23 19:22:37.887477+00:00 [error] <0.209.0> Ra: failed to start ra server ra_coordination_server_sup_sup, err shutdown
+
+BOOT FAILED
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0> BOOT FAILED
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0> ===========
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0> Exception during startup:
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0> exit:{error,shutdown}
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>     rabbit_khepri:setup/1, line 282
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>     rabbit:run_prelaunch_second_phase/0, line 398
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>     rabbit:start/2, line 924
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>     application_master:start_it_old/4, line 295
+2026-01-23 19:22:37.973006+00:00 [error] <0.209.0>
+===========
+Exception during startup:
+
+exit:{error,shutdown}
+
+    rabbit_khepri:setup/1, line 282
+    rabbit:run_prelaunch_second_phase/0, line 398
+    rabbit:start/2, line 924
+    application_master:start_it_old/4, line 295
+
+Error: this command requires the 'rabbit' app to be running on the target node. Start it with 'rabbitmqctl start_app'.
+Arguments given:
+        cluster_status
+
+Usage
+
+rabbitmqctl [--node <node>] [--longnames] [--quiet] cluster_status [--timeout <timeout>]
+2026-01-23 19:22:38.973941+00:00 [notice] <0.45.0> Application rabbit exited with reason: {{error,shutdown},{rabbit,start,[normal,[]]}}
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>   crasher:
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     initial call: application_master:init/3
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     pid: <0.208.0>
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     registered_name: []
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     exception exit: {{error,shutdown},{rabbit,start,[normal,[]]}}
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>       in function  application_master:init/3 (application_master.erl, line 143)
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     ancestors: [application_controller,<0.10.0>]
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     message_queue_len: 1
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     messages: [{'EXIT',<0.209.0>,normal}]
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     links: [<0.45.0>]
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     dictionary: []
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     trap_exit: true
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     status: running
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     heap_size: 233
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     stack_size: 29
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>     reductions: 68
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>   neighbours:
+2026-01-23 19:22:38.974080+00:00 [error] <0.208.0>
+{exit,terminating,[{application_controller,call,2,[{file,"application_controller.erl"},{line,511}]},{application,'-ensure_all_started/3-lc$^0/1-0-',1,[{file,"application.erl"},{line,367}]},{application,ensure_all_started,3,[{file,"application.erl"},{line,367}]},{rabbit,'-start_it/1-fun-0-',1,[{file,"src/rabbit.erl"},{line,432}]},{timer,tc,2,[{file,"timer.erl"},{line,595}]},{rabbit,start_it,1,[{file,"src/rabbit.erl"},{line,428}]},{init,start_it,1,[]},{init,start_em,1,[]}]}
+Error: unable to perform an operation on node 'rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'. Please see diagnostics information and suggestions below.
+
+Most common reasons for this are:
+
+ * Target node is unreachable (e.g. due to hostname resolution, TCP connection or firewall issues)
+ * CLI tool fails to authenticate with the server (e.g. due to CLI tool's Erlang cookie not matching that of the server)
+ * Target node is not running
+
+In addition to the diagnostics info below:
+
+ * See the CLI, clustering and networking guides on https://rabbitmq.com/documentation.html to learn more
+ * Consult server logs on node rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+ * If target node is configured to use long node names, don't forget to use --longnames with CLI tools
+
+DIAGNOSTICS
+===========
+
+attempted to contact: ['rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local']
+
+rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local:
+  * connected to epmd (port 4369) on moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+  * epmd reports: node 'rabbit' not running at all
+                  no other nodes on moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local
+  * suggestion: start the node
+
+Current node details:
+ * node name: 'rabbitmqcli-987-rabbit@moti-rabbitmq-0.moti-rabbitmq-headless.dc619e-dev.svc.cluster.local'
+ * effective user's home directory: /opt/bitnami/rabbitmq/.rabbitmq
+ * Erlang cookie hash: SIb22spsdtux/QuK1NRFZA==
+
+Kernel pid terminated (application_controller) ("{application_start_failure,rabbit,{{error,shutdown},{rabbit,start,[normal,[]]}}}")
+
+Crash dump is being written to: /opt/bitnami/rabbitmq/var/log/rabbitmq/erl_crash.dump...done
