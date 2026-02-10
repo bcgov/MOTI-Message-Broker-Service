@@ -9,9 +9,6 @@ rabbitmq:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  backup:
-    enabled: true
-
   image:
     tag: 4.2-debian-12-20251212-224016
 
