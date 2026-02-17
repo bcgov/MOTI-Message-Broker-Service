@@ -1,6 +1,6 @@
 rabbitmq:
   enabled: true
-  replicaCount: 2
+  replicaCount: 3
 
   autoscaling:
     enabled: false
@@ -28,6 +28,11 @@ rabbitmq:
     auth_oauth2.scope_prefix = rabbitmq.
     auth_oauth2.additional_scopes_key = roles
     auth_oauth2.verify_aud = true
+
+  resources:
+    requests:
+      cpu: 0.15
+      memory: 512Mi
 
 allowedNamespace:
   - name: fb3c60

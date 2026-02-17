@@ -1,6 +1,6 @@
 rabbitmq:
   enabled: true
-  replicaCount: 2
+  replicaCount: 3
 
   autoscaling:
     enabled: false
@@ -15,6 +15,11 @@ rabbitmq:
   hosts:
     management: dev-moti-rabbitmq.apps.golddr.devops.gov.bc.ca
     stomp: dev-moti-rabbitmq-stomp.apps.golddr.devops.gov.bc.ca
+
+  resources:
+    requests:
+      cpu: 0.15
+      memory: 512Mi
 
 allowedNamespace:
   - name: fb3c60
