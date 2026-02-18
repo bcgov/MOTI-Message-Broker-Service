@@ -1,6 +1,6 @@
 rabbitmq:
   enabled: true
-  replicaCount: 2
+  replicaCount: 3
 
   autoscaling:
     enabled: false
@@ -15,6 +15,11 @@ rabbitmq:
   hosts:
     management: moti-rabbitmq.apps.golddr.devops.gov.bc.ca
     stomp: moti-rabbitmq-stomp.apps.golddr.devops.gov.bc.ca
+
+  resources:
+    requests:
+      cpu: 0.2
+      memory: 512Mi
 
   extraConfiguration: |-
     management.disable_basic_auth = false
