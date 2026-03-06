@@ -38,7 +38,7 @@ jobs:
         registry-url: ${{ env.REGISTRY }}
         registry-username: ${{ github.actor }}
         registry-password: ${{ secrets.GITHUB_TOKEN }}
-        image-name: ${{ secrets.IMAGE_NAME }}
+        image-name: ${{ env.IMAGE_NAME }}
         docker-context: dockerfiles/4.2/debian-12
         docker-file: dockerfiles/4.2/debian-12/Dockerfile
         metadata-tags: |
@@ -47,13 +47,13 @@ jobs:
     - name: Fetch RabbitMQ Version
       id: fetch_version
       run: |
-        VERSION=$(docker run --rm --entrypoint rabbitmqctl ${{ env.REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{ env.TAG_PREFIX }}-${{ env.BUILD_TIME }} version)
+        VERSION=$(docker run --rm --entrypoint rabbitmqctl ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG_PREFIX }}-${{ env.BUILD_TIME }} version)
         echo "RabbitMQ version: $VERSION"
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
     - name: Generate Dockerfile
       run: |
-        echo "FROM ${{ env.REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{ env.TAG_PREFIX }}-${{ env.BUILD_TIME }}" > Dockerfile
+        echo "FROM ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG_PREFIX }}-${{ env.BUILD_TIME }}" > Dockerfile
 
     - name: Build and Push Docker image
       uses: egose/actions/docker-build-push@c3000c229fec8ddd3d6f2d326900de8898168f3e
@@ -61,7 +61,7 @@ jobs:
         registry-url: ${{ env.REGISTRY }}
         registry-username: ${{ github.actor }}
         registry-password: ${{ secrets.GITHUB_TOKEN }}
-        image-name: ${{ secrets.IMAGE_NAME }}
+        image-name: ${{ env.IMAGE_NAME }}
         docker-context: .
         docker-file: Dockerfile
         metadata-tags: |
