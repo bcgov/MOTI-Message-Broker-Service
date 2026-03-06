@@ -5,7 +5,7 @@ metadata:
   name: {{ include "main.fullname" . }}-transport-server
 spec:
   monitor:
-    interval: 10
+    interval: 11
     timeout: 10
     type: tcp
   service: {{ .Values.rabbitmq.fullnameOverride }}
