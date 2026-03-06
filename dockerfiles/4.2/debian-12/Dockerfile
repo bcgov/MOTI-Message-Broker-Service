@@ -7,13 +7,13 @@ ARG DOWNLOADS_URL="downloads.bitnami.com/files/stacksmith"
 ARG TARGETARCH
 
 LABEL org.opencontainers.image.base.name="docker.io/bitnami/minideb:bookworm" \
-      org.opencontainers.image.created="2025-11-19T11:26:24Z" \
+      org.opencontainers.image.created="2026-02-19T04:06:18Z" \
       org.opencontainers.image.description="Application packaged by Broadcom, Inc." \
       org.opencontainers.image.documentation="https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/README.md" \
       org.opencontainers.image.source="https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq" \
       org.opencontainers.image.title="rabbitmq" \
       org.opencontainers.image.vendor="Broadcom, Inc." \
-      org.opencontainers.image.version="4.2.1"
+      org.opencontainers.image.version="4.2.4"
 
 ENV HOME="/opt/bitnami/rabbitmq/.rabbitmq" \
     OS_ARCH="${TARGETARCH:-amd64}" \
@@ -32,7 +32,7 @@ RUN --mount=type=secret,id=downloads_url,env=SECRET_DOWNLOADS_URL \
     mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ || exit 1 ; \
     COMPONENTS=( \
       "erlang-27.3.4-3-linux-${OS_ARCH}-debian-12" \
-      "rabbitmq-4.2.1-0-linux-${OS_ARCH}-debian-12" \
+      "rabbitmq-4.2.4-0-linux-${OS_ARCH}-debian-12" \
     ) ; \
     for COMPONENT in "${COMPONENTS[@]}"; do \
       if [ ! -f "${COMPONENT}.tar.gz" ]; then \
@@ -56,7 +56,7 @@ COPY rootfs /
 RUN find / -type f -name "*.sh" -exec chmod +x {} +
 
 RUN /opt/bitnami/scripts/rabbitmq/postunpack.sh
-ENV APP_VERSION="4.2.1" \
+ENV APP_VERSION="4.2.4" \
     BITNAMI_APP_NAME="rabbitmq" \
     IMAGE_REVISION="1" \
     LANG="en_US.UTF-8" \
