@@ -1,5 +1,4 @@
 # See https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml
-# https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml#L1039
 rabbitmq:
   enabled: false
 
