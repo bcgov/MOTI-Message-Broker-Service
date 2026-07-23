@@ -21,7 +21,7 @@ jobs:
       packages: write
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
     - name: Fetch RabbitMQ Version
       id: fetch_version
@@ -35,7 +35,7 @@ jobs:
         echo "FROM docker.io/bitnamilegacy/rabbitmq:latest" > Dockerfile
 
     - name: Build and Push Docker image
-      uses: egose/actions/docker-build-push@c3000c229fec8ddd3d6f2d326900de8898168f3e
+      uses: egose/actions/docker-build-push@799b388fb3497236093c6eb7e3eac0b4c8f956ce
       with:
         registry-url: ${{ env.GITHUB_REGISTRY }}
         registry-username: ${{ github.actor }}
