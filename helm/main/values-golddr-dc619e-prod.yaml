@@ -16,6 +16,9 @@ rabbitmq:
     management: moti-rabbitmq.apps.golddr.devops.gov.bc.ca
     stomp: moti-rabbitmq-stomp.apps.golddr.devops.gov.bc.ca
 
+  persistence:
+    size: 5Gi
+
   resources:
     requests:
       cpu: 0.2
