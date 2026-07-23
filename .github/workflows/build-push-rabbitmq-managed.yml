@@ -23,8 +23,7 @@ jobs:
     env:
       TAG_PREFIX: 4.3-debian-12
     steps:
-    - uses: hmarr/debug-action@f7318c783045ac39ed9bb497e22ce835fdafbfe6
-    - uses: actions/checkout@6d193bf28034eafb982f37bd894289fe649468fc
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
     - name: Setup Tools
       uses: ./.github/actions/setup-tools
@@ -33,7 +32,7 @@ jobs:
       run: echo "BUILD_TIME=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
 
     - name: Build and Push
-      uses: egose/actions/docker-build-push@c3000c229fec8ddd3d6f2d326900de8898168f3e
+      uses: egose/actions/docker-build-push@799b388fb3497236093c6eb7e3eac0b4c8f956ce
       with:
         registry-url: ${{ env.REGISTRY }}
         registry-username: ${{ github.actor }}
@@ -56,7 +55,7 @@ jobs:
         echo "FROM ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG_PREFIX }}-${{ env.BUILD_TIME }}" > Dockerfile
 
     - name: Build and Push Docker image
-      uses: egose/actions/docker-build-push@c3000c229fec8ddd3d6f2d326900de8898168f3e
+      uses: egose/actions/docker-build-push@799b388fb3497236093c6eb7e3eac0b4c8f956ce
       with:
         registry-url: ${{ env.REGISTRY }}
         registry-username: ${{ github.actor }}
