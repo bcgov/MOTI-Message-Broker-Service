@@ -1,6 +1,6 @@
-# Dockerfiles
+# How to Update RabbitMQ Managed Image
 
-This directory contains the managed RabbitMQ image sources used by this repository.
+This repository stores the managed RabbitMQ image sources under `dockerfiles/`.
 
 Each version is stored under its own path, for example `4.3/debian-12/`, and includes the Docker build context:
 
@@ -29,6 +29,29 @@ docker build --progress=plain -f dockerfiles/4.3/debian-12/Dockerfile dockerfile
 6. After the workflow publishes the image, update the Helm values files that pin the RabbitMQ image tag.
 7. Deploy the updated chart with the appropriate GitHub deploy workflow.
 
+## Upgrading Test And Prod Environments
+
+Use the dispatcher workflow `.github/workflows/deploy-gold-dr-dispatch.yml` to deploy upper environments.
+
+Before deploying to `test` or `prod`, download the RabbitMQ definitions from both `gold` and `golddr` as backups.
+
+Recommended sequence:
+
+1. Confirm the new managed image has been published to `ghcr.io/bcgov/bitnami-rabbitmq`.
+2. Update the target Helm values files under `helm/main/` with the intended image tag.
+3. Download the current RabbitMQ definitions from both the `gold` and `golddr` target environments as backups before deployment.
+4. Run the GitHub Actions workflow `Deploy Gold & GoldDR Environment` from `.github/workflows/deploy-gold-dr-dispatch.yml`.
+5. Select the target `environment` input: `test` or `prod`.
+6. Let the dispatcher deploy both `gold` and `golddr` for the selected environment.
+7. Verify the RabbitMQ pods, routes, and application behavior after rollout.
+
+The dispatcher workflow maps the selected environment to these deployment jobs:
+
+- `gold-<environment>` using `CLUSTER=gold`
+- `golddr-<environment>` using `CLUSTER=golddr`
+
+For example, selecting `test` deploys both `gold-test` and `golddr-test`. Selecting `prod` deploys both `gold-prod` and `golddr-prod`.
+
 ## Important Build Detail
 
 When these files are copied into this repo, executable bits on shipped shell scripts are not always preserved.
@@ -54,7 +77,6 @@ When introducing a new managed image version, review these files together:
 - `dockerfiles/<version>/debian-12/Dockerfile`
 - `.github/workflows/build-push-rabbitmq-managed.yml`
 - `helm/main/values-*.yaml`
-- `helm/main/template.yaml`
 
 ## Verification Checklist
 
