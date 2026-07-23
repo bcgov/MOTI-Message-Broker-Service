@@ -29,6 +29,9 @@ rabbitmq:
     auth_oauth2.additional_scopes_key = roles
     auth_oauth2.verify_aud = true
 
+  persistence:
+    size: 1.95Gi
+
   resources:
     requests:
       cpu: 0.15
