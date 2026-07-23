@@ -22,6 +22,10 @@ ENV HOME="/opt/bitnami/rabbitmq/.rabbitmq" \
     PATH="/opt/bitnami/erlang/bin:/opt/bitnami/rabbitmq/sbin:$PATH"
 
 COPY prebuildfs /
+# prebuildfs ships shell scripts without executable bits in this repo snapshot.
+# Restore them before calling install_packages from /usr/sbin.
+RUN find / -type f -name "*.sh" -exec chmod +x {} \;
+RUN chmod +x /usr/sbin/install_packages
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN install_packages ca-certificates curl libgcc-s1 libssl3 libstdc++6 libtinfo6 locales procps zlib1g
@@ -51,6 +55,8 @@ RUN update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX && \
 RUN /opt/bitnami/scripts/locales/generate-locales.sh
 
 COPY rootfs /
+# rootfs entrypoint and helper scripts also need execute bits after COPY.
+RUN find / -type f -name "*.sh" -exec chmod +x {} +
 RUN /opt/bitnami/scripts/rabbitmq/postunpack.sh
 ENV APP_VERSION="4.3.4" \
     BITNAMI_APP_NAME="rabbitmq" \
