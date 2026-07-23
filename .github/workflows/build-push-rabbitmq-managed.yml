@@ -7,6 +7,8 @@ on:
     paths:
     - dockerfiles/**
     - .github/workflows/build-push-rabbitmq-managed.yml
+  workflow_dispatch:
+
 
 env:
   REGISTRY: ghcr.io
