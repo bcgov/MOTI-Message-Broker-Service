@@ -52,7 +52,7 @@ rabbitmq:
     auth_oauth2.additional_scopes_key = roles
     auth_oauth2.verify_aud = true
 
-  podManagementPolicy: OrderedReady # Parallel
+  podManagementPolicy: Parallel # OrderedReady
 
   clustering:
     enabled: true
