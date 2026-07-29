@@ -1,4 +1,5 @@
 name: Deploy Gold & GoldDR Environment
+run-name: Deploy Crunchy Helm Chart to OpenShift ${{ github.event.inputs.cluster }} for ${{ github.event.inputs.environment }}
 
 on:
   workflow_dispatch:
